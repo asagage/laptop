@@ -1,8 +1,8 @@
 # Laptop
 
-Laptop is a playbook to set up an OS X laptop (for web development).
+Laptop is a playbook to set up an OS X laptop.
 
-It installs and configures most of the software Siyelo uses on our Macs for web and software development. 
+It installs and configures most of the software I use. 
 
 It can be run multiple times on the same machine safely. It installs, upgrades, or skips packages based on what is already installed on the machine.
 
@@ -11,7 +11,7 @@ It can be run multiple times on the same machine safely. It installs, upgrades, 
 
 We've tested it on;
 
-* OS X Yosemite (~10.10.4)
+* OS X MOjave (~10.14.4)
 
 
 ## Installation
@@ -20,7 +20,7 @@ We've tested it on;
 
 If you'd like to start with my default list of tools and apps (see Included Apps/Config below), then simply install with;
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/siyelo/laptop/master/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/asagage/laptop/master/install.sh)"
 
 
 You can always customize the install after-the-fact (see below), and re-run the playbook. It will skip over any installed apps.
@@ -31,9 +31,9 @@ If you want to add/remove to the list of apps/utils installed, its pretty straig
 
 As above, download and bootstrap the script. But stop it before it starts ansible, and edit the playbook as desired, before re-running ansible.
 
-1. Grab and start the bootstrap script. Let it install the prereqs and clone the full `siyelo/laptop` repo locally...
+1. Grab and start the bootstrap script. Let it install the prereqs and clone the full `asagage/laptop` repo locally...
 
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/siyelo/laptop/master/install.sh)"
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/asagage/laptop/master/install.sh)"
 
 
 1. Stop the script (Ctrl+C) when ansible asks for the a 'sudo' password. 
@@ -179,7 +179,7 @@ It then syncs your user prefs with dotfiles+rcm
 
 It grabs the [thoughttbot/dotfiles](https://github.com/thoughtbot/dotfiles) repo, saves it in `~/src/thoughtbot/dotfiles` and symlinks it to ~/dotfiles. 
 
-It then grabs [glennr/dotfiles](https://github.com/glennr/dotfiles) repo, saves it in `~/src/glennr/dotfiles` and symlinks it to ~/dotfiles-local
+It then grabs [asagage/dotfiles](https://github.com/asagage/dotfiles) repo, saves it in `~/src/asagage/dotfiles` and symlinks it to ~/dotfiles-local
 
 You probably want to change the `dotfile_repo_username` variable to match your github username :-)
 
@@ -229,9 +229,9 @@ Instead, you can follow theses instructions for [how to build a Mac OS X Virtual
 
 ### Approach
 
-We've tested it using an OSX 10.10 Vagrant/Virtualbox VM for developing & testing the Ansible scripts.
+We've tested it using an OSX 10.14 Vagrant/Virtualbox VM for developing & testing the Ansible scripts.
 
-Simply spin up the Yosemite box in a VM, and have vagrant kick off the laptop setup.
+Simply spin up the MOjave box in a VM, and have vagrant kick off the laptop setup.
 
 ### Whats included?
 
@@ -282,14 +282,12 @@ The Vagrant box we use is a [clean-ish install of OSX](https://github.com/timsut
       ```
 
 ## Author
-
-[Glenn Roberts](http://glenn-roberts.com), 2015. 
-
+[Asa Gage](http://asagage.com), 2019.
 
 ## Credits
 
 This project is based off the work of the following folks;
-
+* [Glenn Roberts](http://glenn-roberts.com), 2015.
 * Eduardo de Oliveira Hernandes' [ansible-macbook](https://github.com/eduardodeoh/ansible-macbook])
 * Jeff Geerlings' [Mac Dev Ansible Playbook](https://github.com/geerlingguy/mac-dev-playbook)
 * [Thoughtbot/laptop](https://github.com/thoughtbot/laptop) (boostrapping, dev tools)
