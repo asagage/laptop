@@ -40,7 +40,7 @@
 
     - name: Install Homebrew
       shell: ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-      when: brew_installed.stat.exists == false
+      when: not brew_installed.stat.exists
 
     - name: update homebrew
       homebrew:
@@ -50,9 +50,8 @@
 
     - name: Install libraries/utils with homebrew
       homebrew: 
-        name: "{{ item }}" 
+        name: "{{ brew_utils }}" 
         state: present
-      with_items: "{{ brew_utils }}"
     
     - name: Cleanup after brewing
       shell: brew cleanup
@@ -61,8 +60,7 @@
 
     - name: Install Apps with homebrew_cask
       homebrew_cask:
-        name: "{{ item }}"
-      with_items: "{{ applications }}"
+        name: "{{ apps }}"
 
     ### ZSH radness 
 

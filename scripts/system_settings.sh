@@ -33,21 +33,11 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-fancy_echo "Hiding spotlight icon" 
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-# to undo
-# sudo chmod 755 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-
 fancy_echo "Disabling OS X Gate Keeper"
 echo "(You'll be able to install any app you want from here on, not just Mac App Store apps)"
 sudo spctl --master-disable
 sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
 defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-fancy_echo "Disabling OS X Crash Reporter"
-sudo defaults write com.apple.CrashReporter DialogType none
-launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
-sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
 
 fancy_echo "Increasing the window resize speed for Cocoa applications"
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -163,12 +153,6 @@ fancy_echo "Disabling disk image verification"
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
-fancy_echo "Enabling snap-to-grid for icons on the desktop and in other icon views"
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-
 
 fancy_echo "Disable disk image verification"
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
@@ -309,10 +293,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 fancy_echo "Preventing Time Machine from prompting to use new hard drives as backup volume"
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-fancy_echo "Disabling local Time Machine backups"
-hash tmutil &> /dev/null && sudo tmutil disablelocal
-
 
 ###############################################################################
 # Messages                                                                    #
