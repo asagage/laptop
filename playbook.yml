@@ -3,7 +3,7 @@
 
   vars:
 
-    applications:
+    apps:
       - atom # sublime without annoying popup | https://atom.io/download/mac 
       - dropbox # a worse Mega Sync
       - google-chrome
@@ -44,7 +44,9 @@
     ### UTILS
 
     - name: Install libraries/utils with homebrew
-      homebrew: name={{ item }} state=present
+      homebrew: 
+        name: {{ item }} 
+        state: present
       with_items: "{{ brew_utils }}"
     
     - name: Cleanup after brewing
@@ -52,16 +54,10 @@
 
     ### APPZ
 
-    - name: Check for installed apps(casks)
-      shell: brew cask list | grep {{ item }}
-      register: installed_applications
+    - name: Install Apps with homebrew_cask
+      homebrew_cask:
+        name: "{{ item }}"
       with_items: "{{ applications }}"
-      ignore_errors: true
-    
-    - name: Install Apps with brew-cask
-      shell: brew cask install {{ item }}
-      with_items: "{{ applications }}"
-      when: "{{ item not in installed_applications.results|map(attribute='stdout') }}"
 
     ### ZSH radness 
 
