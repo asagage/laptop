@@ -33,7 +33,6 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-
 fancy_echo "Hiding spotlight icon" 
 sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # to undo
@@ -381,11 +380,8 @@ fancy_echo "Use the system-native print preview dialog in Chrome"
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 
-
 fancy_echo "Disable the sound effects on boot"
 sudo nvram SystemAudioVolume=" "
-
-
 
 ###############################################################################
 # Kill affected applications
