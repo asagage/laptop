@@ -83,8 +83,6 @@
     brew_taps:
       - caskroom/cask
       - caskroom/versions # for sublime-text3
-      - homebrew/binary
-      - homebrew/dupes # gnu grep
 
     dotfile_repo_username: asagage # the GH repo where your dotfiles are
 
