@@ -44,7 +44,7 @@
 
     - name: update homebrew
       homebrew:
-      update_homebrew: yes
+        update_homebrew: yes
     
     ### UTILS
 
@@ -69,17 +69,17 @@
       register: current_shell
 
     - name: Enable zsh in /etc/shells
-      shell: sudo /bin/sh -c 'grep -q "{{ zsh_path }}" /etc/shells || echo "{{ zsh_path }}" >> /etc/shells'
-      when: current_shell.stdout != '/usr/local/bin/zsh'    
+      shell: /bin/sh -c 'grep -q "{{ zsh_path }}" /etc/shells || echo "{{ zsh_path }}" >> /etc/shells'
+      become: true
+      when: current_shell.stdout != '/usr/local/bin/zsh' 
 
     - name: Set zsh as default shell
       shell: chsh -s {{ zsh_path }}
       when: current_shell.stdout != '/usr/local/bin/zsh'
-      sudo: true
+      become: true
 
     - name: Install oh-my-zsh
       git: repo=https://github.com/robbyrussell/oh-my-zsh dest=~/.oh-my-zsh
-      sudo: false
       when: install_oh_my_zsh == true
       tags: install_oh_my_zsh
 
@@ -87,7 +87,7 @@
 
     - name: Configure System Settings
       script: scripts/system_settings.sh
-      sudo: true
+      become: true
 
     ### DOTFILES
 
