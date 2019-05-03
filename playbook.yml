@@ -41,14 +41,6 @@
       shell: ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
       when: brew_installed.stat.exists == false
 
-    - name: Check homebrew-cask is installed
-      stat: path=/usr/local/bin/brew-cask.rb
-      register: brew_cask_installed
-
-    - name: Install homebrew-cask
-      shell: brew install brew-cask
-      when: brew_cask_installed.stat.exists == false
-
     ### UTILS
 
     - name: Install libraries/utils with homebrew
