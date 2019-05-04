@@ -68,6 +68,10 @@ git clone https://github.com/asagage/laptop.git
 fancy_echo "Changing to laptop repo dir ..."
 cd laptop
 
+# Install Roles
+fancy_echo "Installing galaxy roles ..."
+ansible-galaxy install --roles-path ./roles -r requirements.yml
+
 # Run this from the same directory as this README file. 
 fancy_echo "Running ansible playbook ..."
 ansible-playbook playbook.yml -i hosts -K -vvvv 
