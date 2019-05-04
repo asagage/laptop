@@ -83,6 +83,6 @@ ansible-playbook main.yml --syntax-check
 
 # Run this from the same directory as this README file. 
 fancy_echo "Running ansible playbook ..."
-ansible-playbook playbook.yml -i hosts -K -vvv 
+ansible-playbook main.yml -i hosts -K -vvv 
 
 fancy_echo "All set! Enjoy."
