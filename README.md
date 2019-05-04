@@ -1,4 +1,5 @@
 # Laptop
+[![Build Status](https://travis-ci.org/asagage/laptop.svg?branch=master)](https://travis-ci.org/asagage/laptop)
 
 Laptop is a playbook to set up an OS X laptop.
 
