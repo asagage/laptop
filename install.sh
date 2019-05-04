@@ -24,7 +24,7 @@ fancy_echo() {
   printf "\n$fmt\n" "$@"
 }
 
-fancy_echo "Boostrapping ..."
+fancy_echo "Bootstrapping ..."
 
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
@@ -37,7 +37,7 @@ set -e
 
 # Ensure Apple's command line tools are installed
 # if ! command -v cc >/dev/null; then
-if if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
+if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
    test -d "${xpath}" && test -x "${xpath}" ; then
   fancy_echo "Installing xcode ..."
   xcode-select --install 
