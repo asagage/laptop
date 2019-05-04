@@ -50,7 +50,8 @@
       - { id: 466416967, name: "NavicatPremiumEssentials (11.2.18)" }
       - { id: 926036361, name: "LastPass (4.4.0)" }
 
-    install_oh_my_zsh:  true
+    install_oh_my_zsh:  false
+    install_mas_apps: false
 
     dotfiles_repo: "https://github.com/asagage/dotfiles.git"
     
@@ -126,9 +127,9 @@
 
     ### OSX SETTINGS
 
-    - name: Configure System Settings
-      script: scripts/system_settings.sh
-      become: true
+#      - name: Configure System Settings
+#      script: scripts/system_settings.sh
+#      become: true
 
     ### DOTFILES
 
