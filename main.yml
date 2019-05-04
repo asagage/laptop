@@ -54,7 +54,10 @@
     install_mas_apps: false
 
     dotfiles_repo: "https://github.com/asagage/dotfiles.git"
-    
+    dotfiles_repo_version: master
+    dotfiles_repo_accept_hostkey: false
+    dotfiles_repo_local_destination: "~/.dotfiles"
+
     brew_utils:
       - docker # | https://docs.docker.com/installation/mac/
       - git
@@ -71,7 +74,6 @@
 
   roles: 
     - { role: geerlingguy.mas }
-    - { role: geerlingguy.dotfiles }
 
   tasks:
     
@@ -132,7 +134,16 @@
 #      become: true
 
     ### DOTFILES
+    - name: Ensure dotfiles repository is cloned locally.
+      git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ dotfiles_repo_local_destination }}"
+        version: "{{ dotfiles_repo_version }}"
+        accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+      become: false
 
+    - debug:
+      msg: "When you are ready to install the dotfiles, cd into ~/.dotfiles and run 'script/bootstrap'"
 
     ## POST INSTALL STEPS / Cask gotchas
     #
