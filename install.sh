@@ -44,7 +44,7 @@ else
 fi
 
 # setup our base dir
-fancy_echo("Creating base dir if needed ...")
+fancy_echo "Creating base dir if needed ..."
 mkdir -p $basedir
 
 if [ -d "$basedir/laptop" ]; then
