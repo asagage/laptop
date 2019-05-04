@@ -11,7 +11,7 @@ It can be run multiple times on the same machine safely. It installs, upgrades, 
 
 We've tested it on;
 
-* OS X MOjave (~10.14.4)
+* OS X Mojave (~10.14.4)
 
 
 ## Installation
