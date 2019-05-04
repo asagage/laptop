@@ -143,7 +143,7 @@
       become: false
 
     - debug:
-      msg: "When you are ready to install the dotfiles, cd into ~/.dotfiles and run 'script/bootstrap'"
+        msg: "When you are ready to install the dotfiles, cd into ~/.dotfiles and run 'script/bootstrap'"
 
     ## POST INSTALL STEPS / Cask gotchas
     #
