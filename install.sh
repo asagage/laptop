@@ -37,7 +37,8 @@ set -e
 
 # Ensure Apple's command line tools are installed
 # if ! command -v cc >/dev/null; then
-if ! xcode-select -p 1>/dev/null; then
+if if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
+   test -d "${xpath}" && test -x "${xpath}" ; then
   fancy_echo "Installing xcode ..."
   xcode-select --install 
 else
