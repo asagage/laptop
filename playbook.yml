@@ -4,23 +4,60 @@
   vars:
 
     apps:
+      - apache-directory-studio
+      - arq
       - atom # sublime without annoying popup | https://atom.io/download/mac 
+      - charles
+      - docker
       - dropbox # a worse Mega Sync
+      - electrum
+      - evernote
+      - expandrive
+      - filezilla
+      - firefox
       - google-chrome
+      - chrome-remote-desktop-host
+      - iglasses
       - iterm2 
       - karabiner # Keyboard customization
+      - ledger-live
+      - lucidchart
+      - microsoft-office
+      - microsoft-teams
+      - mimecast
+      - monero-wallet
+      - paw
+      - pixelmator
+      - pingplotter
+      - powershell
+      - pycharm
+      - razer-synapse
+      - remote-desktop-connection
       - skitch 
+      - sublime-text
+      - the-unarchiver
+      - utorrent
       - vagrant # | https://www.vagrantup.com/downloads.html
       - vagrant-manager # 
       - virtualbox # | https://www.virtualbox.org/
+      - visual-studio-code
+      - vmware-fusion
+      - webstorm
+      - xld
+      - zoomus
+
+    mas_installed_apps:
+      - { id: 466416967, name: "NavicatPremiumEssentials (11.2.18)" }
+      - { id: 926036361, name: "LastPass (4.4.0)" }
 
     install_oh_my_zsh:  true
 
-    dotfile_repo_username: asagage # the GH repo where your dotfiles are
-
+    dotfiles_repo: "https://github.com/asagage/dotfiles.git"
+    
     brew_utils:
       - docker # | https://docs.docker.com/installation/mac/
       - git
+      - grc
       - python
       - tmux
       - vim
@@ -30,6 +67,10 @@
     zsh_path: /usr/local/bin/zsh
 
     home: "{{ lookup('env','HOME') }}"
+
+  roles: 
+    - { role: geerlingguy.mas }
+    - { role: geerlingguy.dotfiles }
 
   tasks:
     
